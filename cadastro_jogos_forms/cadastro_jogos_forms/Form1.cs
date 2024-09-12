@@ -11,6 +11,7 @@ namespace cadastro_jogos_forms
             InitializeComponent();
         }
 
+        // Impede do usuário receber erros por preenchimento errado
         public void ValidaJogo(JogoViewModel a)
         {
             if (a.Id < 0)
@@ -25,7 +26,7 @@ namespace cadastro_jogos_forms
                 throw new Exception("Data de Aquisição inválida!");
         }
 
-
+        // Converte os valores recebidos em propriedades do objeto
         private JogoViewModel PreencheDadosVO()
         {
             JogoViewModel Jogo = new JogoViewModel();
@@ -37,6 +38,7 @@ namespace cadastro_jogos_forms
             return Jogo;
         }
 
+        // Inserir os dados no DB
         private void btn_inserir_Click(object sender, EventArgs e)
         {
             try
@@ -53,6 +55,7 @@ namespace cadastro_jogos_forms
             }
         }
 
+        // Alterar os dados no DB
         private void btn_alterar_Click(object sender, EventArgs e)
         {
             try
@@ -69,13 +72,13 @@ namespace cadastro_jogos_forms
             }
         }
 
+        // Excluir os dados no DB
         private void btn_excluir_Click(object sender, EventArgs e)
         {
             try
             {
                 JogoDAO dao = new JogoDAO();
                 dao.Excluir(Convert.ToInt32(id.Text));
-                MessageBox.Show("Excluído com sucesso!");
             }
             catch (Exception erro)
             {
@@ -112,6 +115,30 @@ namespace cadastro_jogos_forms
                 MessageBox.Show(erro.Message);
             }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                JogoDAO dao = new JogoDAO();
+                List<JogoViewModel> jogos = dao.ConsultaGeral();
+                string jogosStr = "";
+                if (jogos != null)
+                {
+                    foreach (JogoViewModel jogo in jogos)
+                    {
+                        jogosStr += dao.JogoString(jogo);
+                    }
+                    MessageBox.Show(jogosStr);
+                }
+                else
+                    MessageBox.Show("Registro não encontrado!");
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
         }
     }
 }

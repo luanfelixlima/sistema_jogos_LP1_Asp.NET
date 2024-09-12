@@ -51,6 +51,7 @@ namespace cadastro_jogos_forms.DAO
         {
             string sql = "delete jogos where id =" + id;
             HelperDAO.ExecutaSQL(sql, null);
+            MessageBox.Show("Excluído com sucesso!");
         }
 
         /// <summary>
@@ -69,6 +70,12 @@ namespace cadastro_jogos_forms.DAO
             return Jogo;
         }
 
+        public string JogoString(JogoViewModel jogo)
+        {
+            return $"Id: {jogo.Id} | Descrição: {jogo.Descricao} | Valor: {jogo.ValorLocacao} | " +
+                $"Data aquisição: {jogo.DataAquisicao} | Id Categoria: {jogo.CategoriaId}\n";
+        }
+
 
         /// <summary>
         /// Consulta um jogo com base eu seu id
@@ -84,6 +91,27 @@ namespace cadastro_jogos_forms.DAO
                 return MontaModel(tabela.Rows[0]);
         }
 
+        /// <summary>
+        /// Consulta todos os jogos do DB
+        /// </summary>
+        public List<JogoViewModel> ConsultaGeral()
+        {
+            string sql = "select * from jogos";
+            DataTable tabela = HelperDAO.ExecutaSelect(sql, null);
+            if (tabela.Rows.Count == 0)
+            {
+                return null;
+            } 
+            else
+            {
+                List<JogoViewModel> todosJogos = new List<JogoViewModel>();
+                foreach (DataRow linha in tabela.Rows)
+                {
+                    todosJogos.Add(MontaModel(linha));
+                }
+                return todosJogos;
+            }
+        }
 
 
     }

@@ -42,6 +42,7 @@
             data = new TextBox();
             descricao = new TextBox();
             btn_consulta = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
             // btn_inserir
@@ -57,7 +58,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(34, 38);
+            label1.Location = new Point(67, 45);
             label1.Name = "label1";
             label1.Size = new Size(17, 15);
             label1.TabIndex = 5;
@@ -66,7 +67,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(214, 38);
+            label2.Location = new Point(247, 45);
             label2.Name = "label2";
             label2.Size = new Size(102, 15);
             label2.TabIndex = 6;
@@ -75,7 +76,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(98, 38);
+            label3.Location = new Point(131, 45);
             label3.Name = "label3";
             label3.Size = new Size(58, 15);
             label3.TabIndex = 7;
@@ -84,7 +85,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(335, 38);
+            label4.Location = new Point(368, 45);
             label4.Name = "label4";
             label4.Size = new Size(33, 15);
             label4.TabIndex = 8;
@@ -93,7 +94,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(416, 38);
+            label5.Location = new Point(449, 45);
             label5.Name = "label5";
             label5.Size = new Size(58, 15);
             label5.TabIndex = 9;
@@ -101,7 +102,7 @@
             // 
             // btn_alterar
             // 
-            btn_alterar.Location = new Point(140, 138);
+            btn_alterar.Location = new Point(133, 138);
             btn_alterar.Name = "btn_alterar";
             btn_alterar.Size = new Size(90, 30);
             btn_alterar.TabIndex = 10;
@@ -111,7 +112,7 @@
             // 
             // btn_excluir
             // 
-            btn_excluir.Location = new Point(255, 138);
+            btn_excluir.Location = new Point(242, 138);
             btn_excluir.Name = "btn_excluir";
             btn_excluir.Size = new Size(90, 30);
             btn_excluir.TabIndex = 11;
@@ -121,42 +122,42 @@
             // 
             // id
             // 
-            id.Location = new Point(34, 56);
+            id.Location = new Point(67, 63);
             id.Name = "id";
             id.Size = new Size(43, 23);
             id.TabIndex = 12;
             // 
             // categoria
             // 
-            categoria.Location = new Point(416, 56);
+            categoria.Location = new Point(449, 63);
             categoria.Name = "categoria";
             categoria.Size = new Size(58, 23);
             categoria.TabIndex = 13;
             // 
             // valor
             // 
-            valor.Location = new Point(335, 56);
+            valor.Location = new Point(368, 63);
             valor.Name = "valor";
             valor.Size = new Size(61, 23);
             valor.TabIndex = 14;
             // 
             // data
             // 
-            data.Location = new Point(214, 56);
+            data.Location = new Point(247, 63);
             data.Name = "data";
             data.Size = new Size(102, 23);
             data.TabIndex = 15;
             // 
             // descricao
             // 
-            descricao.Location = new Point(98, 56);
+            descricao.Location = new Point(131, 63);
             descricao.Name = "descricao";
             descricao.Size = new Size(100, 23);
             descricao.TabIndex = 16;
             // 
             // btn_consulta
             // 
-            btn_consulta.Location = new Point(367, 138);
+            btn_consulta.Location = new Point(352, 138);
             btn_consulta.Name = "btn_consulta";
             btn_consulta.Size = new Size(90, 30);
             btn_consulta.TabIndex = 17;
@@ -164,11 +165,22 @@
             btn_consulta.UseVisualStyleBackColor = true;
             btn_consulta.Click += btn_consulta_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(459, 138);
+            button1.Name = "button1";
+            button1.Size = new Size(101, 30);
+            button1.TabIndex = 18;
+            button1.Text = "Consulta Geral";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(582, 183);
+            Controls.Add(button1);
             Controls.Add(btn_consulta);
             Controls.Add(descricao);
             Controls.Add(data);
@@ -205,5 +217,6 @@
         private TextBox data;
         private TextBox descricao;
         private Button btn_consulta;
+        private Button button1;
     }
 }
