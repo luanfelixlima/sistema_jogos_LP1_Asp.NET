@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace cadastro_jogos_forms.Models
 {
-    internal class JogoViewModel
+    public class JogoViewModel
     {
         public int Id { get; set; }
         public string Descricao { get; set; }
