@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,9 @@ namespace cadastro_jogos_forms.DAO
             return parametros;
         }
 
+        /// <summary>
+        /// Insere um jogo no banco de dados
+        /// </summary>
         public void Inserir(JogoViewModel Jogo)
         {
             string sql =
@@ -41,12 +45,46 @@ namespace cadastro_jogos_forms.DAO
         }
 
         /// <summary>
-        /// Exclui um aluno no banco de dados.
+        /// Exclui um jogo no banco de dados.
         /// </summary>
         public void Excluir(int id)
         {
             string sql = "delete jogos where id =" + id;
             HelperDAO.ExecutaSQL(sql, null);
         }
+
+        /// <summary>
+        /// Recebe uma registro e e preenche um objeto JogoVO
+        /// </summary>
+        /// <param name="registro">1 registro (linha) do DataTable</param>
+        /// <returns>Objeto com os atributos preenchidos</returns>
+        public static JogoViewModel MontaModel(DataRow registro)
+        {
+            JogoViewModel Jogo = new JogoViewModel();
+            Jogo.Id = Convert.ToInt32(registro["id"]);
+            Jogo.Descricao = registro["descricao"].ToString();
+            Jogo.CategoriaId = Convert.ToInt32(registro["categoriaID"]);
+            Jogo.ValorLocacao = Convert.ToDouble(registro["valor_locacao"]);
+            Jogo.DataAquisicao = Convert.ToDateTime(registro["data_aquisicao"]);
+            return Jogo;
+        }
+
+
+        /// <summary>
+        /// Consulta um jogo com base eu seu id
+        /// </summary>
+        /// <param name="id">id do jogo</param>
+        public JogoViewModel Consulta(int id)
+        {
+            string sql = "select * from jogos where id = " + id;
+            DataTable tabela = HelperDAO.ExecutaSelect(sql, null);
+            if (tabela.Rows.Count == 0)
+                return null;
+            else
+                return MontaModel(tabela.Rows[0]);
+        }
+
+
+
     }
 }

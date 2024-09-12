@@ -41,6 +41,7 @@
             valor = new TextBox();
             data = new TextBox();
             descricao = new TextBox();
+            btn_consulta = new Button();
             SuspendLayout();
             // 
             // btn_inserir
@@ -153,11 +154,22 @@
             descricao.Size = new Size(100, 23);
             descricao.TabIndex = 16;
             // 
+            // btn_consulta
+            // 
+            btn_consulta.Location = new Point(367, 138);
+            btn_consulta.Name = "btn_consulta";
+            btn_consulta.Size = new Size(90, 30);
+            btn_consulta.TabIndex = 17;
+            btn_consulta.Text = "Consulta";
+            btn_consulta.UseVisualStyleBackColor = true;
+            btn_consulta.Click += btn_consulta_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(582, 183);
+            Controls.Add(btn_consulta);
             Controls.Add(descricao);
             Controls.Add(data);
             Controls.Add(valor);
@@ -192,5 +204,6 @@
         private TextBox valor;
         private TextBox data;
         private TextBox descricao;
+        private Button btn_consulta;
     }
 }

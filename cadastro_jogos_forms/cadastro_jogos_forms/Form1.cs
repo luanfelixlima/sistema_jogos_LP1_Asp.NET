@@ -82,5 +82,36 @@ namespace cadastro_jogos_forms
                 MessageBox.Show(erro.Message);
             }
         }
+
+
+        private void PreencheTela(JogoViewModel a)
+        {
+            if (a != null)
+            {
+                id.Text = a.Id.ToString();
+                descricao.Text = a.Descricao;
+                categoria.Text = a.CategoriaId.ToString();
+                data.Text = a.DataAquisicao.ToShortDateString();
+                valor.Text = a.ValorLocacao.ToString();
+            }
+        }
+
+        private void btn_consulta_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                JogoDAO dao = new JogoDAO();
+                JogoViewModel a = dao.Consulta(Convert.ToInt32(id.Text));
+                if (a != null)
+                    PreencheTela(a);
+                else
+                    MessageBox.Show("Registro não encontrado!");
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
+
+        }
     }
 }

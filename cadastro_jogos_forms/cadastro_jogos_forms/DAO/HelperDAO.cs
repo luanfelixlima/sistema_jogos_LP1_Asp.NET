@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace cadastro_jogos_forms.DAO
 {
@@ -21,5 +22,28 @@ namespace cadastro_jogos_forms.DAO
                 }
             }
         }
+
+
+        /// <summary>
+        /// Executa uma instrução Select
+        /// </summary>
+        /// <param name="sql">instrução SQL</param>
+        /// <returns>DataTable com os dados da instrução SQL</returns>
+        public static DataTable ExecutaSelect(string sql, SqlParameter[] parametros)
+        {
+            using (SqlConnection conexao = ConexaoBD.GetConexao())
+            {
+                using (SqlDataAdapter adapter = new SqlDataAdapter(sql, conexao))
+                {
+                    if (parametros != null)
+                        adapter.SelectCommand.Parameters.AddRange(parametros);
+                    DataTable tabelaTemp = new DataTable();
+                    adapter.Fill(tabelaTemp);
+                    return tabelaTemp;
+                }
+            }
+        }
+
+
     }
 }
